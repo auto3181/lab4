@@ -13,7 +13,7 @@ class Car:  # Машина, умеет ездить, каждые 10 клето�
             self.fuel -= self.consumption
             direction -= 10
 
-    def refill(self, fuel):
+    def refill(self, fuel=20):
         if self.fuel + fuel <= 20:
             self.fuel += fuel
         else:
@@ -116,6 +116,7 @@ def showInfo(input_obj):
 
 C = Car()
 C.move(16)
+C.refill()
 print('Остаток топлива в автомобиле:', C.getFuel(), 'Выручка автомобиля: ', C.profit())
 T = Taxi()
 T.move(64)
