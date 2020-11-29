@@ -1,6 +1,6 @@
 class Car:
     """
-    Машина, умеет ездить, каждые 10 клеток теряет единицу топлива, 
+    Машина, умеет ездить, каждые 10 клеток теряет единицу топлива,
     объем бака равен 20.
     """
 
@@ -24,10 +24,10 @@ class Car:
         else:
             self.fuel = 20
 
-    def getPosition(self):
+    def get_position(self):
         return self.pos
 
-    def getFuel(self):
+    def get_fuel(self):
         return self.fuel
 
     def profit(self):
@@ -52,7 +52,7 @@ class Taxi(Car):
 
 class Bus(Car):
     name = 'Автобус'
-    occupPlaces = 0
+    occupied_places = 0
 
     def __init__(self):
         super().__init__()
@@ -63,19 +63,19 @@ class Bus(Car):
         self.fuel = 50
         self.consumption = 5
 
-    def takePlaces(self, count):
-        self.occupPlaces = count
-        if self.occupPlaces > self.places:
-            self.occupPlaces = self.places
+    def take_places(self, count):
+        self.occupied_places = count
+        if self.occupied_places > self.places:
+            self.occupied_places = self.places
             self.places = 0
         else:
-            self.places -= self.occupPlaces
+            self.places -= self.occupied_places
 
     def profit(self):
-        self.money += self.cost * self.occupPlaces
+        self.money += self.cost * self.occupied_places
         return self.money
 
-    def getFreePlaces(self):
+    def get_free_places(self):
         return self.places
 
 
@@ -104,13 +104,13 @@ class Airbus(Bus):
         self.fuel = 10000
         self.consumption = 50
 
-    def ultraSpeedMode(self, direction):
+    def ultra_speed_mode(self, direction):
         self.pos += 7 * direction
         while direction >= 10:
             self.fuel -= 3 * self.consumption
             direction -= 10
 
 
-def showInfo(input_obj):
+def show_info(input_obj):
     input_obj.profit()
     print('Информация о', input_obj.name, input_obj.__dict__)
